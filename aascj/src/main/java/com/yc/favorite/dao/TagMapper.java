@@ -1,5 +1,7 @@
 package com.yc.favorite.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
@@ -19,5 +21,8 @@ public interface TagMapper {
 	int updateCount(String tag);
 	@Select("select * from tag where tname= #{tname}")
 	Tag selcetByNmae(String tag);
+	
+	@Select("selcet  from tag")
+	List<Tag> selectAll();
 
 }
