@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.yc.favorite.bean.Favorite;
 
-public interface FavoritMapper {
+public interface FavoriteMapper {
 
 	@Insert("insert into favorite values(null"+
 	",#{flabel},#{furl},#{fdesc},#{ftags})")

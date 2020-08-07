@@ -19,7 +19,7 @@ public class BaseTest {
 		
 		SqlSession session=MyBatisHelper.openSession();
 		
-		FavoritMapper fm=session.getMapper(FavoritMapper.class);
+		FavoriteMapper fm=session.getMapper(FavoriteMapper.class);
 		TagMapper tm=session.getMapper(TagMapper.class);
 		TagFavoriteMapper tfm=session.getMapper(TagFavoriteMapper.class);
 		
@@ -66,7 +66,7 @@ public class BaseTest {
 	@Test
 	public void Test4() {
 		SqlSession session=MyBatisHelper.openSession();
-		FavoritMapper fm=session.getMapper(FavoritMapper.class);
+		FavoriteMapper fm=session.getMapper(FavoriteMapper.class);
 		fm.selectByTid(null);
 		fm.selectByTid(1);
 		fm.selectByTid(0);

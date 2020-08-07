@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.yc.favorite.bean.Favorite;
 import com.yc.favorite.bean.Tag;
 import com.yc.favorite.bean.TagFavorite;
-import com.yc.favorite.dao.FavoritMapper;
+import com.yc.favorite.dao.FavoriteMapper;
 import com.yc.favorite.dao.TagFavoriteMapper;
 import com.yc.favorite.dao.TagMapper;
 import com.yc.favorite.util.MyBatisHelper;
@@ -17,7 +17,7 @@ public class FavoriteBiz {
 		
         SqlSession session=MyBatisHelper.openSession();
 		
-		FavoritMapper fm=session.getMapper(FavoritMapper.class);
+		FavoriteMapper fm=session.getMapper(FavoriteMapper.class);
 		TagMapper tm=session.getMapper(TagMapper.class);
 		TagFavoriteMapper tfm=session.getMapper(TagFavoriteMapper.class);
 		
