@@ -23,7 +23,7 @@ public interface TagMapper {
 	Tag selcetByNmae(String tag);
 	
 	
-	@Select("selcet * from tag")
+	@Select("select * from tag")
 	List<Tag> selectAll();
 
 }
