@@ -1,15 +1,12 @@
-
 <!DOCTYPE HTML>
 <html lang="en-US">
-  <head>
-    
+  <head> 
     <title>收藏</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0" charset="UTF-8">    
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	
-	<script type="text/javascript" src="js/vue.min.js/"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<script type="text/javascript" src="js/axios.min.js"></script>
 	
 	<script type="text/javascript">
@@ -47,10 +44,8 @@
 						</td>
 					</tr>
 					
-					
 						
-						
-					<tr v-for=" t in tags">
+					<tr v-for="t in tags">
 					<td><a href="??">{{t.tname}}</a></td>
 					</tr>
 						
@@ -125,18 +120,18 @@
 	</table> 
 	<script type="text/javascript">
 	 var vue=new Vue({
-		 el :"#app",
+		 el : "#app",
 		 data : {
 			 //左边的分类数组
 			 tags : [],
 			 //右边的链接数组
 			 favs : [] 
-		 }
+		 },
 	 //启动时查询所有连接
 	 created : function(){
 		 axios.get("queryTags.do").then(res=>{
-			 this.tags = res.data
-		 })
+			 this.tags = res.data;
+		 });
 	 }
 		 
 	 });
