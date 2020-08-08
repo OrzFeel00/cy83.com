@@ -22,7 +22,8 @@ public interface TagMapper {
 	@Select("select * from tag where tname= #{tname}")
 	Tag selcetByNmae(String tag);
 	
-	@Select("selcet  from tag")
+	
+	@Select("selcet * from tag")
 	List<Tag> selectAll();
 
 }
