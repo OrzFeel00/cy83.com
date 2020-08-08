@@ -18,32 +18,27 @@ import com.yc.favorite.util.MyBatisHelper;
 public class QueryTagsSevlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public QueryTagsSevlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
              
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		SqlSession session=MyBatisHelper.openSession();
 		TagMapper tm=session.getMapper(TagMapper.class);
+		
 		Gson gson=new Gson();
 		String json =gson.toJson(tm.selectAll());
 		response.getWriter().append(json);
  
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
