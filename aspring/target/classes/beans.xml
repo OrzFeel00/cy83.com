@@ -8,6 +8,12 @@
        
     </bean>
 
+     <bean id="mdao" class="com.yc.spring.dao.MySQLUserDao">   
+       
+    </bean>
+     <bean id="odao" class="com.yc.spring.dao.OracleUserDao">   
+       
+    </bean>
  
     
 
