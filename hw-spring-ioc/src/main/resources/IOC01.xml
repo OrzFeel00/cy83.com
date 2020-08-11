@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd">
+     <!-- 1 -->
+     <bean id="myUser" class="com.yc.spring.bbs.bean.User">
+     <property name="uname" value="武松"></property>
+     <property name="upass" value="abc123"></property>
+     <property name="head" value="20.gif"></property>
+     <property name="gender" value="1"></property>
+     
+     </bean>
+     <!-- 2 -->
+     <bean class="com.yc.spring.bbs.bean.User" primary="true" >
+      <property name="uname" value="石秀"></property>
+     <property name="upass" value="XYZ890"></property>
+     <property name="head" value="345.gif"></property>
+     <property name="gender" value="0"></property>
+     
+     </bean>
+     
+     <bean id="page1" class="com.yc.spring.bbs.bean.Page">
+     
+     </bean>
+     
+     
+     
+</beans>

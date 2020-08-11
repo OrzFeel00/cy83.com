@@ -14,7 +14,83 @@
      <bean id="odao" class="com.yc.spring.dao.OracleUserDao">   
        
     </bean>
- 
+
+     <!-- 
+     Spring 依赖注入（DI）注入方式三种
+     1，setter注入（set方法注入）   注入:{对象的属性经行初始化设值的过程}
+     new 对象
+                调用 set方法
+     2.构造方法注入
+     3.接口注入==>spring mvc 大量应用
+      --> 
+      <!-- 注入的例子是 实体对象     但是  实际开发中很少对实体对象设值！！！ -->
+      <bean id="p1" class="com.yc.spring.bean.Person">
+      <!--property 实现set注入 -->
+      <property name="name" value="武松"></property>
+          <property name="age" value="35"></property>
+          <property name="Height" value="195"></property>
+          <property name="weight" value="96kg"></property>
+          <property name="killeds">
+             <list>
+             <value type="java.lang.String">老虎</value>
+              <value>西门庆</value>
+               <value>潘金莲</value>
+             </list>
+          
+          </property>
+            
+      
+      </bean>
+      <!-- 构造方法注入                          通过类获取时              primary="true"设置当前的bean是主要的，或说：是当前默认使用的  。。index 多个采用构造方法重载时时的参数顺序 -->
+      <bean class="com.yc.spring.bean.Person" primary="true">
+      <constructor-arg  name="name" value="李逵" index="1" ></constructor-arg>
+        <constructor-arg  name="age" value="40" index="2"></constructor-arg>
+          <constructor-arg  name="weight" value="130kg" index="0"></constructor-arg>
+      </bean>
+      <!-- ref引用其他的bean -->
+      <bean id="p2" class="com.yc.spring.bean.Person">
+          <property name="name" value="吴用"></property>
+          <property name="age" value="44"></property>
+          <property name="friend" ref="p3"> </property>
+           </bean>
+          
+      <bean id="p3" class="com.yc.spring.bean.Person">
+          <property name="name" value="花容"></property>
+          <property name="age" value="54"></property>
+      </bean>
+      <!--  -->
+         <bean id="p5" class="com.yc.spring.bean.Person" 
+         factory-method="PersonFactory">
+          <property name="name" value="王英"></property>
+        
+      </bean>
+      
+       
+      <!-- 
+      autowire="default"  自动装载
+      byName :用属性名从容器获取指定id的bean
+      
+       -->
+        <bean id="yy" class="com.yc.spring.bean.Person" >
+        <property name="name" value="sb"></property>
+        <property name="age" value="55"></property>
+        </bean>
+         <bean id="p7" class="com.yc.spring.bean.Person"  autowire="byName">
+          <property name="name" value="王英"></property>
+             <property name="age" value="35"></property>
+               
+        
+      </bean>
+      
+      <bean id="hello3" class="com.yc.spring.Hello" init-method="init" destroy-method="destroy"> 
+      
+      
+      
+      </bean>
+      
+      
+      
+      
     
 
 </beans>
