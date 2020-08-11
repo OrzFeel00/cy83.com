@@ -23,8 +23,27 @@
      <property name="gender" value="0"></property>
      
      </bean>
-     
+     <!-- 3 -->
      <bean id="page1" class="com.yc.spring.bbs.bean.Page">
+         <property name="total" value="100"></property>
+             <property name="rows">
+             <list>
+             <value>湖南</value>
+              <value>广东</value>
+               <value>77</value>
+                <value type="java.lang.Integer">100</value>
+             
+             </list>
+             </property>
+            
+     </bean>
+     
+      <!-- 4 -->
+     <bean id="board" class="com.yc.spring.bbs.bean.Board" primary="true" >
+      <property name="uname" value="石秀"></property>
+     <property name="upass" value="XYZ890"></property>
+     <property name="head" value="345.gif"></property>
+     <property name="gender" value="0"></property>
      
      </bean>
      
