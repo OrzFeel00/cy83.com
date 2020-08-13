@@ -1,5 +1,6 @@
 package com.yc.spring;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yc.spring.bean.Person;
-import com.yc.spring.dao.BeanConfig;
+import com.yc.spring.BeanConfig;
 import com.yc.spring.dao.UserDao;
 
 
@@ -18,9 +19,9 @@ public class HellTestForAnno {
 	public void before() {
 		ctx=new AnnotationConfigApplicationContext(BeanConfig.class);
 	}
-	@Before
-	public void closs() {
-		ctx=new AnnotationConfigApplicationContext(BeanConfig.class);
+	@After
+	public void after() {
+		ctx.close();
 	}
 	 @Test
 		public void test() {
@@ -111,9 +112,29 @@ public class HellTestForAnno {
 			}
 		 
 		 @Test
-			public void test8() {
-				Hello h0=(Hello) ctx.getBean("hello3");
+			public void test7() {
+				Hello h0=(Hello) ctx.getBean("hello");
+				Hello h0_1=(Hello) ctx.getBean("hello");
+				Hello h0_2=(Hello) ctx.getBean("hello");
 				
+				Hello h1=(Hello) ctx.getBean("hello1");
+				Hello h1_1=(Hello) ctx.getBean("hello1");
+				Hello h1_2=(Hello) ctx.getBean("hello1");
+				
+			System.out.println(h0==h1);//f
+			System.out.println(h0_1==h0_2);//t
+			System.out.println(h0_1==h1_2);//f
+			System.out.println(h1==h1_1);//f
+			System.out.println(h1==h1_2);//f
+	      	
+			}
+		 
+		 
+		 @Test
+			public void test8() {
+			 System.out.println("======8=====");
+				Hello h0=(Hello) ctx.getBean("hello2");
+				h0.sayHello();
 			
 			
 				ctx.close();

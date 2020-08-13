@@ -12,29 +12,20 @@ public class Person {
 	private List<String> killeds;
 	
 	private Person friend;
-	private Person yy;
 	
 
 	
-	public Person(Person yy) {
-		super();
-		this.yy = yy;
-	}
+	
 
 
 	/*
 	 * 静态的 工厂方法
 	 * */
 	
-	public Person getYy() {
-		return yy;
-	}
+	
 
 
-	public void setYy(Person yy) {
-		this.yy = yy;
-	}
-
+	
 
 	public static Person PersonFactory() {
 		Person p=new Person();

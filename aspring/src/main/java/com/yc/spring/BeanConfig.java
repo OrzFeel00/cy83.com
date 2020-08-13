@@ -1,18 +1,23 @@
-package com.yc.spring.dao;
+package com.yc.spring;
+
 
 import java.util.ArrayList;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.yc.spring.Hello;
 import com.yc.spring.bean.Person;
 
 @Configuration  
+@ComponentScan("com.yc")//组件扫描 ,自动递归扫描
 public class BeanConfig {
-	@Bean(name="odao")
+	/*
+	 * @Bean(name="odao")
 	public OracleUserDao getOracleUserDao() {
 		return new OracleUserDao();
 	}
@@ -20,6 +25,9 @@ public class BeanConfig {
 	public MySQLUserDao getMySQLUserDao() {
 		return new MySQLUserDao();
 	}
+	 * 
+	 * */
+	
 	@Bean(name="hello")
 	public Hello getHello() {
 		return new Hello();
@@ -31,10 +39,16 @@ public class BeanConfig {
 		ret.setAge(35);
 		ret.setKilleds(new ArrayList<String>());
 		ret.getKilleds().add("潘金莲");
-		ret.getKilleds().add("2潘金莲");
-		ret.getKilleds().add("2潘金莲");
+		ret.getKilleds().add("潘金莲");
+		ret.getKilleds().add("潘金莲");
 		
 		return ret;
+	}
+	@Bean(name = "p5")
+	public Person getPerson5() {
+		Person p=Person.PersonFactory();
+		p.setName("王英");
+		return p;
 	}
 	
 	@Bean(name="hello1")//对应bean 的id
@@ -43,8 +57,9 @@ public class BeanConfig {
 		return new Hello();
 	}
 	
+	
 	@Bean(name="hello2")
-    @Lazy("")
+	@Lazy
 	public Hello getHello2() {
 		return new Hello();
 	}

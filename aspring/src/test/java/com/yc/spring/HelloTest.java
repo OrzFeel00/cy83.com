@@ -113,6 +113,8 @@ public class HelloTest {
 			ctx.close();
 		}
 	 
+	 
+	 
 	 @Test
 		public void test8() {
 			Hello h0=(Hello) ctx.getBean("hello3");
@@ -126,7 +128,7 @@ public class HelloTest {
 		public void test9() {
 		 Person p7=(Person) ctx.getBean("p7");
 			
-		System.out.println(p7.getYy().getName());
+		System.out.println(p7.getFriend().getName());
 		
 			ctx.close();
 		}

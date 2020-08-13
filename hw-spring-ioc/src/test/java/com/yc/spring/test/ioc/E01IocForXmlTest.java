@@ -24,6 +24,7 @@ public class E01IocForXmlTest {
 		Assert.assertNotNull(user);
 		Assert.assertEquals("武松", user.getUname());
 		Assert.assertEquals("abc123", user.getUpass());
+	
 		Assert.assertEquals("20.gif", user.getHead());
 		Assert.assertEquals(Integer.valueOf(1), user.getGender());
 	}

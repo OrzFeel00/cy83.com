@@ -45,7 +45,7 @@
       <bean class="com.yc.spring.bean.Person" primary="true">
       <constructor-arg  name="name" value="李逵" index="1" ></constructor-arg>
         <constructor-arg  name="age" value="40" index="2"></constructor-arg>
-          <constructor-arg  name="weight" value="130kg" index="0"></constructor-arg>
+         
       </bean>
       <!-- ref引用其他的bean -->
       <bean id="p2" class="com.yc.spring.bean.Person">
@@ -64,6 +64,11 @@
           <property name="name" value="王英"></property>
         
       </bean>
+      <bean id="p6" class="com.yc.spring.bean.Person" 
+         >
+          <property name="name" value="sb"></property>
+        
+      </bean>
       
        
       <!-- 
@@ -71,7 +76,7 @@
       byName :用属性名从容器获取指定id的bean
       
        -->
-        <bean id="yy" class="com.yc.spring.bean.Person" >
+        <bean id="friend" class="com.yc.spring.bean.Person" >
         <property name="name" value="sb"></property>
         <property name="age" value="55"></property>
         </bean>
@@ -82,11 +87,7 @@
         
       </bean>
       
-      <bean id="hello3" class="com.yc.spring.Hello" init-method="init" destroy-method="destroy"> 
       
-      
-      
-      </bean>
       
       
       

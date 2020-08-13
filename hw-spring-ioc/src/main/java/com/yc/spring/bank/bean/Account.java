@@ -13,7 +13,20 @@ public class Account {
 	private Integer id;		// 主键
 	private String name;	// 姓名
 	private Double money;	// 余额
+	private Account a;
 	
+	public Account getA() {
+		return a;
+	}
+	public void setA(Account a) {
+		this.a = a;
+	}
+	public static Account getSingleAccount() {
+		return singleAccount;
+	}
+	public static void setSingleAccount(Account singleAccount) {
+		Account.singleAccount = singleAccount;
+	}
 	public Integer getId() {
 		return id;
 	}

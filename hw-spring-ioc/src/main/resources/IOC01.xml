@@ -38,14 +38,48 @@
             
      </bean>
      
-      <!-- 4 -->
-     <bean id="board" class="com.yc.spring.bbs.bean.Board" primary="true" >
-      <property name="uname" value="石秀"></property>
-     <property name="upass" value="XYZ890"></property>
-     <property name="head" value="345.gif"></property>
-     <property name="gender" value="0"></property>
+      <!-- 4 
+      
+     <bean id="board" class="com.yc.spring.bbs.bean.Board">
+      <property name="boardid" value="100" ></property>
+     <property name="parentid" value="200"></property>
+     <property name="boardname" value="jsp"></property>
+     <property name="parent" ref="par"></property>
      
+        
      </bean>
+     
+     <bean id="par" class="com.yc.spring.bbs.bean.Board">
+       <property name="boardid" value="300"></property>
+       <property name="boardname" value="java"></property>
+      
+      </bean>
+      -->
+      <bean id="page2" class="com.yc.spring.bbs.bean.Page">
+      <property name="total" value="200"></property>
+       <property name="rows" >
+       <list>
+       <bean class="com.yc.spring.bbs.bean.User">
+       <property name="uname" value="华荣"></property>
+       </bean>
+       <map>
+       <entry key="0734" value="衡阳"></entry>
+       <entry key="0731" value="长沙"></entry>
+       </map>
+       <set>
+       <value type="int">100</value>
+       <ref bean="myUser"/>
+        <value>呵呵</value>
+       
+       </set>
+       
+       </list>
+       
+       </property>
+      
+      
+      
+      </bean>
      
      
      

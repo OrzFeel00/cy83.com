@@ -29,6 +29,10 @@ public class Board {
 	 * @param boardname
 	 * @param parentid
 	 */
+	public Board() {
+		
+		
+	}
 	public Board(Integer boardid, String boardname, Integer parentid) {
 		this.boardid = boardid;
 		this.boardname = boardname;

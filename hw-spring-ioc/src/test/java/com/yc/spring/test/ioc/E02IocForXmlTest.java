@@ -16,7 +16,7 @@ public class E02IocForXmlTest {
 		Account a = cxt.getBean(Account.class);
 		Account b = cxt.getBean(Account.class);
 		Account c = (Account) cxt.getBean("account");
-		Assert.assertEquals(a, b);  // a == b
+		Assert.assertEquals(a, c);  // a == b
 		Assert.assertEquals(c, b);	// c == b
 	}
 
@@ -25,7 +25,7 @@ public class E02IocForXmlTest {
 		Account a = (Account) cxt.getBean("account1");
 		Account b = (Account) cxt.getBean("account1");
 		Account c = (Account) cxt.getBean("account1");
-		Assert.assertNotEquals(a, b);
+		Assert.assertNotEquals(a, b);//a!b
 		Assert.assertNotEquals(c, b);
 		Assert.assertNotEquals(c, a);
 	}
