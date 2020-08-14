@@ -62,13 +62,15 @@ mysql user dao
 		System.out.println("====后置增强===");
 	}
 	
-	@AfterReturning("aspect1()")
-	public void AfterReturning() {
-		System.out.println("====返回增强===");
+	@AfterReturning(value="aspect1()",returning = "ret")//returning表示标记当前增强方法里面有一个参数用于业务方法的返回值returning
+	public void AfterReturning(JoinPoint jp,Object ret) {
+		
+		
+		System.out.println("====返回增强==返回="+ret+"=====");
 	}
-	@AfterThrowing("aspect1()")
-	public void AfterThrowing() {
-		System.out.println("====异常增强===");
+	@AfterThrowing(value = "aspect1()",throwing = "e")//表示业务方法产生的异常要注入到底方法参数名称throwing
+	public void AfterThrowing(JoinPoint jp,Exception e) {
+		System.out.println("====异常增强==="+e.getMessage()+"=异常==");
 	}
 	//环绕增强,业务方法需要我们自己执行，而其他4个由spring自动执行
 	@Around("execution( * com.yc.spring.dao.Oracle*.select*(..))")
@@ -86,6 +88,10 @@ mysql user dao
 		}
 		
 		return ret;
+	}
+	@After("execution( * com.yc.spring.Hello.*(..))")
+	public void afterForHello() {
+		System.out.println("====Hello的后置增强===");
 	}
 	
 	

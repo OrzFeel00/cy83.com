@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.yc.spring.bean.Person;
 import com.yc.spring.dao.MySQLUserDao;
 import com.yc.spring.dao.OracleUserDao;
 import com.yc.spring.dao.UserDao;
@@ -21,6 +22,13 @@ public class AOPTest {
 	@Autowired
 	@Qualifier("odao")
 	private UserDao odao;
+	
+	//@Autowired
+	
+	//private Person person;
+	@Autowired
+	
+	private Hello hello;
 
 	@Test
 	public void test1() {
@@ -30,5 +38,15 @@ public class AOPTest {
 		
 		mdao.selectUserId("");
 		System.out.println("====3====");
+	}
+	@Test
+	//如果不是拦截hell那么对象就是new hello（）出来的，
+	public void test2() {
+		System.out.println(mdao);//jdk &p
+		System.out.println(odao);//jdk
+	//	System.out.println(person);
+		System.out.println(hello);//cglib  debug模式下
+		
+		
 	}
 }

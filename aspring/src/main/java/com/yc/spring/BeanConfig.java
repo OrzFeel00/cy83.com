@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 import com.yc.spring.Hello;
 import com.yc.spring.bean.Person;
 
-@Configuration  
-@ComponentScan("com.yc")//组件扫描 ,自动递归扫描
+//@Configuration  //ioc容器配置类的注解 ==》beans。xml
+//@ComponentScan("com.yc")//组件扫描 ,自动递归扫描//如果扫到@Configuration，也会把另一个配置类当作配置文件一起合并
 public class BeanConfig {
 	/*
 	 * @Bean(name="odao")
