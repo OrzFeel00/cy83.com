@@ -15,9 +15,9 @@ import com.yc.cinema.web.UserAction;
 @RunWith(SpringRunner.class)//spring提供的测试运行器
 @ContextConfiguration(classes = BeanConfig.class)
 public class BaseTest {
-
+	@Resource
 	private IndexAction iAction;
-
+	 @Resource
 	private MovieAction mAction;
     @Resource
 	private UserAction uAction;

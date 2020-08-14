@@ -13,7 +13,8 @@ import com.yc.spring.bean.Person;
 //spring对aop的依赖aspectj框架
 @EnableAspectJAutoProxy//aop不是spring提供的概念，
 public class AOPConfig {
-
+	
+	
 	@Bean//未指定id方法名就是id
 	public Person getPerson() {
 		return new Person();

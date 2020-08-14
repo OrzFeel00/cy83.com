@@ -11,7 +11,7 @@ public class UserAction {
 	private UserBiz ubiz;
 	@Autowired
 	private CommentsBiz cbiz;
-
+    @Autowired
 	public UserBiz getUbiz() {
 		return ubiz;
 	}
