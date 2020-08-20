@@ -2,23 +2,33 @@ package com.yc.damai.bean;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
+
+
+
 public class DmUser {
-    @Override
-	public String toString() {
-		return "DmUser [id=" + id + ", ename=" + ename + ", cname=" + cname + ", password=" + password + ", email="
-				+ email + ", phone=" + phone + ", sex=" + sex + ", state=" + state + ", createtime=" + createtime + "]";
-	}
+   
 
 	private Integer id;
 
+	@NotEmpty(message = "账号不能为空")
+	@Length(min = 4 ,max=20,message = "字符长度为4-20")
     private String ename;
-
+	@NotEmpty(message = "名称不能为空")
+	@Length(min = 2 ,max=20,message = "字符长度为2-20")
     private String cname;
-
+	@NotEmpty(message = "密码号不能为空")
+	@Length(min = 6 ,max=20,message = "字符长度为6-20")
     private String password;
-
+    @Email
     private String email;
-
+    @NotEmpty(message = "电话不能为空")
+    @Pattern(regexp = "\\d{11}",message  ="电话号码必须11位数字")
     private String phone;
 
     private String sex;
@@ -98,4 +108,9 @@ public class DmUser {
     public void setCreatetime(Timestamp createtime) {
         this.createtime = createtime;
     }
+    @Override
+   	public String toString() {
+   		return "DmUser [id=" + id + ", ename=" + ename + ", cname=" + cname + ", password=" + password + ", email="
+   				+ email + ", phone=" + phone + ", sex=" + sex + ", state=" + state + ", createtime=" + createtime + "]";
+   	}
 }

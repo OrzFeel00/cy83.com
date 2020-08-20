@@ -3,6 +3,7 @@
  
       xmlns:mvc="http://www.springframework.org/schema/mvc"
   xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation=
     "http://www.springframework.org/schema/beans
@@ -10,20 +11,61 @@
      
      http://www.springframework.org/schema/context
      https://www.springframework.org/schema/context/spring-context.xsd
+     http://mybatis.org/schema/mybatis-spring
+       http://mybatis.org/schema/mybatis-spring.xsd
      
       http://www.springframework.org/schema/mvc
      https://www.springframework.org/schema/mvc/spring-mvc.xsd ">
 
   <!-- 手动添加spring xml文件的命名空间 -->
 <!-- -主键扫描 --> 
-
 <context:component-scan base-package="com.yc.springmvc"></context:component-scan>
-
-
+<!-- Springmvc 控制器注解驱动标签 -->
 <mvc:annotation-driven></mvc:annotation-driven>
 <!-- 静态资源处理的定义。。。。html。css。。。。 -->
 <mvc:default-servlet-handler/>
+<!-- location="被映射的路径，一般是工程外的路径" mapping="映射后的路径，一般工程内路径"
+classpath:/META-INF/public-web-resources/" 映射类路径的文件
+file:/c:/page  映射本地文件夹
+ -->
+ 
+<mvc:resources location="file:/E:/CK/t1/" 
+   mapping="/photo/**"></mvc:resources>
+    <!-- 配置文件上传解析器 -->
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ <!--最大上传文件大小 以字节byte为单位 -->
+	<property name="maxUploadSize" value="1000100010"/>
+	
+</bean>
 
+<!-- 拦截器的定义 -->
+<mvc:interceptors>
+ <mvc:interceptor>
+ <!-- 这里的地址定义 ！=servlet的url定义 -->
+ <mvc:mapping path="/demo/*"/><!-- *表示demo下面所有的资源 -->
+ <mvc:exclude-mapping path="/login.html"/><!-- 这里是排除，排除那些页面如拦截器 -->
+ <bean class="com.yc.springmvc.web.LoginInterceptor"></bean>
+ </mvc:interceptor>
+
+</mvc:interceptors>
+
+<!-- mybatis数据源 -->
+ <context:property-placeholder 
+   location="jdbc.properties"/>
+   
+   <context:component-scan base-package="com.yc.spring.bank"></context:component-scan>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
     
-
+    <!-- mybatis会话工厂 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <mybatis:scan base-package="com.yc.damai.dao"/>
+   
+    
 </beans>
