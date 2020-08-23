@@ -11,6 +11,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @ServerEndpoint(value = "/websocket/{id}")
@@ -39,17 +40,28 @@ public class MywebSocket {
 		
 		String[] ss=message.split(":");
 		String id=ss[0];
-		String msg=ss[1];
+	//	String msg=ss[1];
 		Session targetSession =webSocketMap.get(id);
 		//一定要判断，会话对象可能会失效
 		if(targetSession !=null) {
 			//传入msg
-			targetSession.getBasicRemote().sendText(msg);
+			//targetSession.getBasicRemote().sendText(msg);
+			targetSession.getBasicRemote().sendText(message);
 		}else {
 			System.out.println(id+ "不在线");
 		}
 	}
-	
-	
+	//方法上加定时任务注解                秒       分    时   日 月    星期 （和日互斥）  年可以省略
+	//@Scheduled(cron = "*/6 * * * * ?")
+	@Scheduled(cron ="*/9 * * * * ?")
+	public void luckYou() throws IOException {
+
+		for(Session session :webSocketMap.values())
+		session.getBasicRemote().sendText("祝你好运");
+		
+		
+		
+		
+	}
 
 }
