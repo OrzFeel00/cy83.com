@@ -5,8 +5,10 @@ import javax.xml.ws.RequestWrapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.springmvc.bean.Result;
 
@@ -45,93 +47,77 @@ public class IndexAction {
 	public String toTaobao3() {
 		return "taobao";
 	}
-	@RequestMapping("/{flag}/toPage")
-	public String toPage(@PathVariable("flag") int flag) {
+	
+	//第一也第三组
+	@RequestMapping(path = "toPage",params = "flag")
+	public String Totao() {
 		
 		return "taobao";
 	}
-	@RequestMapping("/{type}/toPage")
-	public String toPage1(@PathVariable("type") int type) {
-	if(type>1) {
+	@RequestMapping(path = "toPage",params = "type=1")
+	public String Totao2() {
+		
+		return "taobao";
+	}
+	@RequestMapping(path = "toPage",params = {"type!=1","!flag"})
+	public String tobaidu1() {
+		
 		return "baidu";
-		
-	}else {
-		return "taobao";
-	}	
-		
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@GetMapping("form.do")
-	public String lo1(String value ) {
+
+	@GetMapping({"toPage","toBaidu","baidu/page","form.do"})
+	public String lo1( ) {
 		
 		return  "baidu";
 	}
 	
-	@RequestMapping("form.do")
+	@PostMapping("form.do")
 	public String lo(String value ) {
 		
 		return  "taobao";
 	}
 	
+	
+	
+	@ResponseBody//将一个Java对象转化为json格式的数据
 	@RequestMapping("call.do")
-	public String lo2(int type  ,String data ) {
-		if(type==1) {
-			data="taobao";
-		}if(type==2) {
-			data="baidu";
-		}
-		return  data;
+	public String call(int type ) {
+		
+		return type ==2 ?  "taobao":"baidu";
 	}
-	
-	
+
+	@ResponseBody//将一个Java对象转化为json格式的数据
 	@RequestMapping("call1.do")
-	public Result lo4(int type  ,Result data) {
-		
-		if(type==1) {
-			data.setMsg("baidu");
-			data.setUrl("toBaidu");
-			
-		}else {
-			data.setMsg("taobao");
-			data.setUrl("toTaobao");
-		}
-		return data;
+	public Result call1(int type ) {
+		Result r=new Result();
+		r.setUrl(type ==2 ? "toTaobao": "toBaidu");
+		r.setMsg(type ==2 ? "跳转淘宝":"跳转百度");
+		return r;
 	}
 	
-	@RequestMapping("exec.do")
-	public Result lo5(String name  ,Result data) {
+	@ResponseBody//将一个Java对象转化为json格式的数据
+    @PostMapping(path = "exec.do")
+	public Result exec() {
+		Result r=new Result();
+		r.setMsg("跳转百度");
+		r.setUrl("toBaidu");
 		
-		if(name=="跳转百度") {
-			data.setMsg("baidu");
-			data.setUrl("toBaidu");
-			
-		}else {
-			data.setMsg("taobao");
-			data.setUrl("toTaobao");
-		}
-		return data;
+		return r;
 	}
-	@RequestMapping("/{type}/toPage")
-	public String toPage2(@PathVariable("type") int type) {
-	if(type>1) {
-		return "baidu";
+	@ResponseBody//将一个Java对象转化为json格式的数据
+	@GetMapping(path = "exec.do")
+	public Result exec1() {
+		Result r=new Result();
+		r.setMsg("跳转淘宝");
+		r.setUrl("toTaobao");
 		
-	}else {
-		return "taobao";
-	}	
-		
+		return r;
 	}
+	   
 	
+
 	
 	
 	

@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
+	<parent><!--父文件配置spring工程属性，爷爷文件配置jar包版本  -->
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.3.RELEASE</version>
@@ -22,8 +22,9 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
+		<!-- web被高级依赖websocket覆盖，不用重新引用 --> 
 		 
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
