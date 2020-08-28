@@ -1,0 +1,30 @@
+server:
+ port: 8001
+ 
+ 
+spring:
+   application:
+     name: user
+
+eureka:
+   client:
+     serviceUrl:
+       defaultZone: http://es1:8000/eureka,http://es2:7999/eureka
+   
+
+#yml支持同一个文件内部的配置块  方式： 使用   ---    分割每一个配置块    每个配置块都要有名字    没有名字就是默认配置块
+---
+server:
+ port: 8005
+#spring认识的id配置(配置 配重块名）
+spring:
+   profiles: user8005
+
+ 
+ 
+---
+server:
+ port: 8006
+ 
+spring:
+  profiles: user8006  

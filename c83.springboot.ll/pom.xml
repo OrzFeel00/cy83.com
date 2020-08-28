@@ -60,6 +60,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- 分页查询启动器，版本springboot没管理，，starter与spring完美匹配 -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.12</version>
+		</dependency>
 	</dependencies>
 
 	<build>

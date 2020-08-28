@@ -2,6 +2,9 @@ package com.yc3.ll.c83.s3.ll.bolg.bean;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+
 public class Article  implements java.io.Serializable{
 	
 	/**
@@ -10,17 +13,32 @@ public class Article  implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String author;
+	@NotEmpty
 	private String title;
+	@NotEmpty//只能对字符串验证（不为空）
 	private String content;
 	private String keywords;
 	private String description;
+	@Min(1)//设置最小值
 	private Integer categoryid;
+	@NotEmpty
 	private String label;
 	private String titleimgs;
 	private String status;
 	private Timestamp createtime;
 	private Integer readcnt;
 	private Integer agreecnt;
+	//所属分类对象
+	private Category category;
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -104,7 +122,7 @@ public class Article  implements java.io.Serializable{
 		return "Article [id=" + id + ", author=" + author + ", title=" + title + ", content=" + content + ", keywords="
 				+ keywords + ", description=" + description + ", categoryid=" + categoryid + ", label=" + label
 				+ ", titleimgs=" + titleimgs + ", status=" + status + ", createtime=" + createtime + ", readcnt="
-				+ readcnt + ", agreecnt=" + agreecnt + "]";
+				+ readcnt + ", agreecnt=" + agreecnt + ", category=" + category + "]";
 	}
 
 }
